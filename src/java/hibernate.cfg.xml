@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory name="biocapture/db">
+        <property name="hibernate.connection.datasource">java:/bio/db</property>
+        <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+  
+        <!--  <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>-->
+
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="current_session_context_class">jta</property>
+        <property name="hibernate.transaction.jta.platform">org.hibernate.engine.transaction.jta.platform.internal.JBossAppServerJtaPlatform</property>
+        <property name="hibernate.transaction.factory_class">org.hibernate.engine.transaction.internal.jta.CMTTransactionFactory</property>
+        <property name="show_sql">true</property>
+        <property name="hibernate.connection.release_mode">after_transaction</property>
+        <property name="org.hibernate.envers.do_not_audit_optimistic_locking_field">false</property>
+        <property name="org.hibernate.envers.store_data_at_delete">true</property>
+        <property name="org.hibernate.envers.audit_table_prefix">ZZ_</property>
+        <property name="org.hibernate.envers.audit_table_suffix"/>
+        <!-- Mapped Classes -->
+        <mapping class="com.sf.biocapture.entity.AuditEntity"/>
+        <mapping class="com.sf.biocapture.entity.BlacklistedData"/>
+        <mapping class="com.sf.biocapture.entity.Country"/>
+        <mapping class="com.sf.biocapture.entity.State"/>
+        <mapping class="com.sf.biocapture.entity.Lga"/>
+        <mapping class="com.sf.biocapture.entity.Zone"/>
+        <mapping class="com.sf.biocapture.entity.Region"/>
+        <mapping class="com.sf.biocapture.entity.Node"/>
+        <mapping class="com.sf.biocapture.entity.Fault"/>
+        <mapping class="com.sf.biocapture.entity.Device"/>
+        <mapping class="com.sf.biocapture.entity.License"/>
+        <mapping class="com.sf.biocapture.entity.DeviceStatus"/>
+        <mapping class="com.sf.biocapture.entity.DeviceType"/>
+        <mapping class="com.sf.biocapture.entity.DuplicateNode"/>
+        <mapping class="com.sf.biocapture.entity.EnrollmentRef"/>
+        <mapping class="com.sf.biocapture.entity.KycDealer"/>
+        <mapping class="com.sf.biocapture.entity.DealerType"/>
+        <mapping class="com.sf.biocapture.entity.KitType"/>
+        <mapping class="com.sf.biocapture.entity.KycBroadcast"/>
+        <mapping class="com.sf.biocapture.entity.NodeAssignment"/>
+        <mapping class="com.sf.biocapture.entity.VendorType"/>
+        <mapping class="com.sf.biocapture.entity.ChurnMsisdn"/>
+        <mapping class="com.sf.biocapture.entity.ChurnDetail"/>
+        <mapping class="com.sf.biocapture.entity.krm.ZonalHourlySync"/>
+        <mapping class="com.sf.biocapture.entity.UserId"/>
+        <mapping class="com.sf.biocapture.entity.Setting"/>
+        <mapping class="com.sf.biocapture.entity.BasicData"/>
+        <mapping class="com.sf.biocapture.entity.DynamicData"/>
+        <mapping class="com.sf.biocapture.entity.HeartBeat"/>
+        <mapping class="com.sf.biocapture.entity.SmsActivationRequest"/>
+        <mapping class="com.sf.biocapture.entity.PhoneNumberStatus"/>
+        <mapping class="com.sf.biocapture.entity.WsqImage"/>  
+        <mapping class="com.sf.biocapture.entity.MsisdnDetail"/>
+        <mapping class="com.sf.biocapture.entity.security.KMUser"/>
+        <mapping class="com.sf.biocapture.entity.security.KMUserRole"/>
+        <mapping class="com.sf.biocapture.entity.security.KMPrivilege"/>
+        <mapping class="com.sf.biocapture.entity.security.KMRole"/>
+        <mapping class="com.sf.biocapture.entity.security.KMPrivilege"/>
+        <mapping class="com.sf.biocapture.entity.security.WatchList"/>
+        <mapping class="com.sf.biocapture.entity.security.BannedSource"/>
+        <mapping class="com.sf.biocapture.entity.FMLicenseRequest"/>
+        <mapping class="com.sf.biocapture.entity.FMLicenseQuota"/>
+        <mapping class="com.sf.biocapture.entity.OTPStatusRecord" />
+        <mapping class="com.sf.biocapture.entity.PassportData" />
+        <mapping class="com.sf.biocapture.entity.SignatureData" />
+        <mapping class="com.sf.biocapture.entity.PassportDetail" />
+        <mapping class="com.sf.biocapture.entity.security.PasswordPolicy" />
+        <mapping class="com.sf.biocapture.entity.audit.AgilityIntegrationLog" />
+        <mapping class="com.sf.biocapture.entity.KitMarker" />
+        <mapping class="com.sf.biocapture.entity.audit.BfpFailureLog" />
+        <mapping class="com.sf.biocapture.entity.audit.BfpSyncLog" />
+        <mapping class="com.sf.biocapture.entity.TagHistory"/>
+        <mapping class="com.sf.biocapture.entity.audit.VersionLog"/>
+        <mapping class="com.sf.biocapture.entity.audit.ClientActivityLog"/>
+        <mapping class="com.sf.biocapture.entity.audit.AccessLog"/>
+        <mapping class="com.sf.biocapture.entity.onboarding.AgentPassport"/>
+        <mapping class="com.sf.biocapture.entity.onboarding.AgentFingerprint"/>
+        <mapping class="com.sf.biocapture.entity.onboarding.OnboardingStatus"/>
+        <mapping class="com.sf.biocapture.entity.audit.SimSwapLog"/>
+        <mapping class="com.sf.biocapture.entity.CrmPushStatus"/>
+        <mapping class="com.sf.biocapture.entity.KycAgilityMapper"/>
+        <mapping class="com.sf.biocapture.entity.KycBlacklist"/>
+        <mapping class="com.sf.biocapture.entity.device.DeviceTagRequest"/>
+        <mapping class="com.sf.biocapture.entity.workflow.Workflow"/>
+        <mapping class="com.sf.biocapture.entity.audit.GeoFenceLog"/>
+        
+        <mapping class="com.sf.biocapture.entity.B2bLocation"/>
+        <mapping class="com.sf.biocapture.entity.B2bLog"/>
+        <mapping class="com.sf.biocapture.entity.DeviceOwner"/>
+        <mapping class="com.sf.biocapture.entity.IssueLog"/>
+        <mapping class="com.sf.biocapture.entity.IssueSummary"/>
+        <mapping class="com.sf.biocapture.entity.NodeAssignmentHistory"/>
+        <mapping class="com.sf.biocapture.entity.Outlet"/>
+        <mapping class="com.sf.biocapture.entity.OutletType"/>
+        <mapping class="com.sf.biocapture.entity.security.Attachment"/>
+        <mapping class="com.sf.biocapture.entity.controls.Community_"/>
+        <mapping class="com.sf.biocapture.entity.controls.KMRoleCommunityMapper"/>
+        <mapping class="com.sf.biocapture.entity.controls.Page_"/>
+        <mapping class="com.sf.biocapture.entity.UserCreationRequest"/>
+        <mapping class="com.sf.biocapture.entity.HeartbeatStatus"/>
+        <mapping class="com.sf.biocapture.entity.Area"/>
+        <mapping class="com.sf.biocapture.entity.Territory"/>
+        <mapping class="com.sf.biocapture.entity.DealerDivision"/>
+        
+        <mapping class="com.sf.biocapture.entity.vtu.BundleType"/>
+        <mapping class="com.sf.biocapture.entity.vtu.KMUserVTU"/>
+        <mapping class="com.sf.biocapture.entity.vtu.VTUCategory"/>
+        <mapping class="com.sf.biocapture.entity.vtu.VTUTransactionLogs"/>
+        <listener class="org.hibernate.envers.event.AuditEventListener" type="post-insert"/>
+        <listener class="org.hibernate.envers.event.AuditEventListener" type="post-update"/>
+        <listener class="org.hibernate.envers.event.AuditEventListener" type="post-delete"/>
+        <listener class="org.hibernate.envers.event.AuditEventListener" type="pre-collection-update"/>
+        <listener class="org.hibernate.envers.event.AuditEventListener" type="pre-collection-remove"/>
+        <listener class="org.hibernate.envers.event.AuditEventListener" type="post-collection-recreate"/>
+    </session-factory>
+</hibernate-configuration>

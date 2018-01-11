@@ -1,0 +1,145 @@
+<table>
+    <tr>
+        <td valign="top" id="templateHeader">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%"
+                   class="mcnTextBlock"
+                   style="min-width:100%;">
+                <tbody >
+                <tr>
+                    <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+                        <!--[if mso]>
+                        <table align="left" border="0" cellspacing="0" cellpadding="0"
+                               width="100%"
+                               style="width:100%;">
+                            <tr>
+                        <![endif]-->
+
+                        <!--[if mso]>
+                        <td valign="top" width="600" style="width:600px;">
+                        <![endif]-->
+                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                               style="max-width:100%; min-width:100%;" width="100%"
+                               class="mcnTextContentContainer">
+                            <tbody>
+                            <tr>
+
+                                <td valign="top" class="mcnTextContent"
+                                    style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+
+                                    <div style="text-align: center;"><strong>SIMROP<br>
+                                         $title$ </strong></div>
+
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!--[if mso]>
+                        </td>
+                        <![endif]-->
+
+                        <!--[if mso]>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" id="templateBody">
+
+
+            <table border="0" cellpadding="0" cellspacing="0" width="100%"
+                   class="mcnTextBlock"
+                   style="min-width:100%;">
+                <tbody class="mcnTextBlockOuter">
+                <tr>
+                    <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+                        <!--[if mso]>
+                        <table align="left" border="0" cellspacing="0" cellpadding="0"
+                               width="100%"
+                               style="width:100%;">
+                            <tr>
+                        <![endif]-->
+
+                        <!--[if mso]>
+                        <td valign="top" width="600" style="width:600px;">
+                        <![endif]-->
+                        <table align="left" border="0" cellpadding="0" cellspacing="0"
+                               style="max-width:100%; min-width:100%;" width="100%">
+                            <tbody>
+                            <tr>
+
+                                <td valign="top" class="mcnTextContent"
+                                    style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+
+                                    <div>&nbsp;</div>
+
+                                    <div style="text-align: justify;"><strong>Dear $dealerName$,</strong><br>
+                                        <br>
+                                        This is to inform you that a device mapped to you has been moved from its default location. See details below;
+                                        <br>
+                                        <br>
+                                        <table style="width:40%">
+                                            <tr>
+                                                <th>Device Tag:</th>
+                                                <td>$deviceTag$</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Default Location:</th>
+                                                <td>$defaultLocation$</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Current Location:</th>
+                                                <td>$currentLocation$</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Agent Username:</th>
+                                                <td>$agentEmail$</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Agent Name:</th>
+                                                <td>$agentName$</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Phone Number:</th>
+                                                <td>$agentPhoneNumber$</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Outlet Name:</th>
+                                                <td>$outletName$</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Outlet Address:</th>
+                                                <td>$outletAddress$</td>
+                                            </tr>
+                                        </table>
+                                        <br>
+                                        Customer Acquisition Helpdesk has been notified. Kindly login <strong><a href="$simropUrl$">here.</a></strong> to see more details about the device.
+                                        <br>
+                                        <br>
+                                        Thank you.<br>
+                                        <strong>Warm Regards.</strong><br>
+                                        &nbsp;</div>
+
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!--[if mso]>
+                        </td>
+                        <![endif]-->
+
+                        <!--[if mso]>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</table>
