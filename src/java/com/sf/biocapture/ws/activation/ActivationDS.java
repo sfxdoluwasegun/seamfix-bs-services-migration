@@ -50,12 +50,13 @@ public class ActivationDS  extends DataService{
                     resp.setDescription("Activation was Successful");
                     
                 }
+                else{
+                
+                    resp.setDescription("Msisdn has been activated previously");
+                }
                 
             }
-            else{
-                
-                resp.setDescription("Msisdn has been activated previously");
-            }
+            
             return resp;
      }
 }
