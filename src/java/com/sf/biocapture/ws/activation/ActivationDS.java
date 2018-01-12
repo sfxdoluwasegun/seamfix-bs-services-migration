@@ -12,6 +12,8 @@ import com.sf.biocapture.ws.ResponseData;
 import java.sql.Timestamp;
 import java.util.Date;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -20,6 +22,7 @@ import org.hibernate.criterion.Restrictions;
  */
 
 @Stateless
+@TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class ActivationDS  extends DataService{
     
      public ResponseData  smsActivation(String uniqueId, String phoneNumber){
@@ -33,8 +36,8 @@ public class ActivationDS  extends DataService{
                 }
                 req.setActivationTimestamp(new Timestamp(new Date().getTime()));
                 req.setMsisdnUpdateTimestamp(new Timestamp(new Date().getTime()));
-                dbService.update(req);
-                //logger.debug("SmsActivationStatus update successful -" + success);
+                boolean success = dbService.update(req);
+                logger.debug("SmsActivationStatus update successful - " + success);
                 resp.setCode(ResponseCodeEnum.SUCCESS);
                 resp.setDescription("Activation was Successful");
             }
