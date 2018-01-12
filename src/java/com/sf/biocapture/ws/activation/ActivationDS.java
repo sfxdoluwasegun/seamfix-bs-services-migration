@@ -28,18 +28,25 @@ public class ActivationDS  extends DataService{
      public ResponseData  smsActivation(String uniqueId, String phoneNumber){
             
             ResponseData  resp = new ResponseData ();
-            SmsActivationRequest req = dbService.getByCriteria(SmsActivationRequest.class, Restrictions.eq("phoneNumber", phoneNumber),
+            SmsActivationRequest req = null;
+            try{
+                 req = dbService.getByCriteria(SmsActivationRequest.class, Restrictions.eq("phoneNumber", phoneNumber),
                                                                                                Restrictions.eq("uniqueId", uniqueId));
+            }catch(Exception e){
+                logger.error("UniqueId and/or Phone number do not exist in the DB ",e);
+            }
             if(req != null){
                 if(req.getConfirmationStatus() == null){
                     req.setConfirmationStatus(Boolean.TRUE);
+                    req.setActivationTimestamp(new Timestamp(new Date().getTime()));
+                    req.setMsisdnUpdateTimestamp(new Timestamp(new Date().getTime()));
+                    boolean success = dbService.update(req);
+                    logger.debug("SmsActivationStatus update successful - " ,success);
+                    resp.setCode(ResponseCodeEnum.SUCCESS);
+                    resp.setDescription("Activation was Successful");
+                    
                 }
-                req.setActivationTimestamp(new Timestamp(new Date().getTime()));
-                req.setMsisdnUpdateTimestamp(new Timestamp(new Date().getTime()));
-                boolean success = dbService.update(req);
-                logger.debug("SmsActivationStatus update successful - " + success);
-                resp.setCode(ResponseCodeEnum.SUCCESS);
-                resp.setDescription("Activation was Successful");
+                
             }
             else{
                 resp.setCode(ResponseCodeEnum.ERROR);

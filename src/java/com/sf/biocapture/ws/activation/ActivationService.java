@@ -17,11 +17,11 @@ public class ActivationService extends BsClazz implements IActivationService{
 
     @Inject
     ActivationDS activationDs;
-    
+
     @Override
     public ResponseData activation(String uniqueId, String phoneNumber) {
        
            return activationDs.smsActivation(uniqueId, phoneNumber);
     }
-    
+      
 }
