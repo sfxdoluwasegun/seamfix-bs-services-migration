@@ -14,6 +14,7 @@ import java.util.Date;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import org.hibernate.HibernateException;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -32,8 +33,8 @@ public class ActivationDS  extends DataService{
             try{
                  req = dbService.getByCriteria(SmsActivationRequest.class, Restrictions.eq("phoneNumber", phoneNumber),
                                                                                                Restrictions.eq("uniqueId", uniqueId));
-            }catch(Exception e){
-                logger.error("UniqueId and/or Phone number do not exist in the DB ",e);
+            }catch(HibernateException e){
+                logger.error("Unable to retrieve SmsActivationRequest using uniqueId and phone number",e);
             }
             if(req != null){
                 if(req.getConfirmationStatus() == null){
