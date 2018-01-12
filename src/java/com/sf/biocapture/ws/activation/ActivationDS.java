@@ -33,8 +33,12 @@ public class ActivationDS  extends DataService{
             try{
                  req = dbService.getByCriteria(SmsActivationRequest.class, Restrictions.eq("phoneNumber", phoneNumber),
                                                                                                Restrictions.eq("uniqueId", uniqueId));
+                 resp.setCode(ResponseCodeEnum.SUCCESS);
             }catch(HibernateException e){
                 logger.error("Unable to retrieve SmsActivationRequest using uniqueId and phone number",e);
+                resp.setCode(ResponseCodeEnum.ERROR);
+                resp.setDescription("Unable to retrieve SmsActivationRequest using uniqueId and phone number");
+                return resp;
             }
             if(req != null){
                 if(req.getConfirmationStatus() == null){
@@ -43,15 +47,14 @@ public class ActivationDS  extends DataService{
                     req.setMsisdnUpdateTimestamp(new Timestamp(new Date().getTime()));
                     boolean success = dbService.update(req);
                     logger.debug("SmsActivationStatus update successful - " ,success);
-                    resp.setCode(ResponseCodeEnum.SUCCESS);
                     resp.setDescription("Activation was Successful");
                     
                 }
                 
             }
             else{
-                resp.setCode(ResponseCodeEnum.ERROR);
-                resp.setDescription("Activation was not successful, uniqueId and Phone number do not exist");
+                
+                resp.setDescription("Msisdn has been activated previously");
             }
             return resp;
      }
