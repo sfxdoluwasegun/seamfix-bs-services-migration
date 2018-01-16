@@ -12,11 +12,11 @@ import javax.ws.rs.core.MediaType;
  * @author Clemet
  * @since 11 Jan 2018, 14:15:13
  */
-public interface IActivationService {
+public interface IDummyActivationService {
 	
 	@POST
-	@Path("/activation/{uniqueId}/{phoneNumber}")
+	@Path("/{usecase}/{uniqueId}/{subscriberInfo}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ResponseData activation(@PathParam("uniqueId") String uniqueId, @PathParam("phoneNumber") String phoneNumber);
+	public ResponseData activation(@PathParam ("usecase")String usecase,@PathParam("uniqueId") String uniqueId, @PathParam("subscriberInfo") String subscriberInfo);
 	
 }

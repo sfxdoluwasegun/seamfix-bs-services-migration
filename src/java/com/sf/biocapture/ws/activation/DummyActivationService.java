@@ -8,20 +8,22 @@ package com.sf.biocapture.ws.activation;
 import com.sf.biocapture.app.BsClazz;
 import com.sf.biocapture.ws.ResponseData;
 import javax.inject.Inject;
+import javax.ws.rs.Path;
 
 /**
  *
- * @author PC
+ * @author Clement
  */
-public class ActivationService extends BsClazz implements IActivationService{
+@Path("/activation")
+public class DummyActivationService extends BsClazz implements IDummyActivationService{
 
     @Inject
-    ActivationDS activationDs;
+    DummyActivationDS dummyActivationDs;
 
     @Override
-    public ResponseData activation(String uniqueId, String phoneNumber) {
+    public ResponseData activation(String usecase, String uniqueId, String subscriberInfo) {
        
-           return activationDs.smsActivation(uniqueId, phoneNumber);
+           return dummyActivationDs.smsActivation(usecase, uniqueId, subscriberInfo);
     }
       
 }
