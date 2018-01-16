@@ -9,6 +9,7 @@ import com.sf.biocapture.ds.DataService;
 import com.sf.biocapture.entity.SmsActivationRequest;
 import com.sf.biocapture.ws.ResponseCodeEnum;
 import com.sf.biocapture.ws.ResponseData;
+import com.sf.biocapture.ws.threshold.pojo.ResponsePojo;
 import java.sql.Timestamp;
 import java.util.Date;
 import javax.ejb.Stateless;
@@ -64,6 +65,11 @@ public class DummyActivationDS  extends DataService{
                                resp.setDescription("Msisdn has been activated previously");
                            }
 
+                    }
+                    else{
+                            resp.setCode(ResponseCodeEnum.ERROR);
+                            resp.setDescription("Parameters supplied are not valid");
+                            return resp;
                     }
                  
             }catch(HibernateException e){
