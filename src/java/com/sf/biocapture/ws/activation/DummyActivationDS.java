@@ -9,7 +9,6 @@ import com.sf.biocapture.ds.DataService;
 import com.sf.biocapture.entity.SmsActivationRequest;
 import com.sf.biocapture.ws.ResponseCodeEnum;
 import com.sf.biocapture.ws.ResponseData;
-import com.sf.biocapture.ws.threshold.pojo.ResponsePojo;
 import java.sql.Timestamp;
 import java.util.Date;
 import javax.ejb.Stateless;
