@@ -49,7 +49,7 @@ public class DummyActivationDS  extends DataService{
                  
                  
                     if(req != null){
-                           if(req.getConfirmationStatus() == null){
+                           if(req.getConfirmationStatus() == false){
                                req.setConfirmationStatus(Boolean.TRUE);
                                req.setActivationTimestamp(new Timestamp(new Date().getTime()));
                                req.setMsisdnUpdateTimestamp(new Timestamp(new Date().getTime()));
@@ -64,6 +64,11 @@ public class DummyActivationDS  extends DataService{
                                resp.setDescription("Msisdn has been activated previously");
                            }
 
+                    }
+                    else{
+                            resp.setCode(ResponseCodeEnum.ERROR);
+                            resp.setDescription("Parameters supplied do not exist in the DB");
+                            return resp;
                     }
                  
             }catch(HibernateException e){
