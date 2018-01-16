@@ -65,11 +65,6 @@ public class DummyActivationDS  extends DataService{
                            }
 
                     }
-                    else{
-                            resp.setCode(ResponseCodeEnum.ERROR);
-                            resp.setDescription("Parameters supplied are not valid");
-                            return resp;
-                    }
                  
             }catch(HibernateException e){
                 logger.error("SmsActivationRequest was not successful",e);
