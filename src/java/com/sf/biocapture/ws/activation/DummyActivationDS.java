@@ -49,15 +49,14 @@ public class DummyActivationDS  extends DataService{
                  
                  
                     if(req != null){
-                           if(req.getConfirmationStatus() == false){
-                               req.setConfirmationStatus(Boolean.TRUE);
-                               req.setActivationTimestamp(new Timestamp(new Date().getTime()));
-                               req.setMsisdnUpdateTimestamp(new Timestamp(new Date().getTime()));
-                               boolean success = dbService.update(req);
-                               logger.debug("SmsActivationStatus update successful - " ,success);
-                               resp.setCode(ResponseCodeEnum.SUCCESS);
-                               resp.setDescription("Activation was Successful");
-
+                           if(req.getConfirmationStatus() == null || req.getConfirmationStatus() == false){
+                                req.setConfirmationStatus(Boolean.TRUE);
+                                req.setActivationTimestamp(new Timestamp(new Date().getTime()));
+                                req.setMsisdnUpdateTimestamp(new Timestamp(new Date().getTime()));
+                                boolean success = dbService.update(req);
+                                logger.debug("SmsActivationStatus update successful - " ,success);
+                                resp.setCode(ResponseCodeEnum.SUCCESS);
+                                resp.setDescription("Activation was Successful");
                            }
                            else{
                                resp.setCode(ResponseCodeEnum.SUCCESS);
