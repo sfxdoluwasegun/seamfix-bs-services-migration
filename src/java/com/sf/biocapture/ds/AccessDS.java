@@ -136,30 +136,16 @@ public class AccessDS extends DataService {
 			KMUser user = getUser(email);
 
 			if(user != null){
-				//do password reset in kyc manager
-				PasswordResetResponse resp = doKMPassordReset(user.getOrbitaId(), password);	
-				if(resp != null){
-					if( resp.getStatusCode() == 0 ){
-						//update KMUser                                        
-						user.setPassword(password);
-						user.setLastPasswordChange(new Timestamp(new Date().getTime()));
-						user.setClientFirstLogin(new Timestamp(new Date().getTime()));
-						dbService.update(user);
+                            //update KMUser                                        
+                            user.setPassword(password);
+                            user.setLastPasswordChange(new Timestamp(new Date().getTime()));
+                            user.setClientFirstLogin(new Timestamp(new Date().getTime()));
+                            dbService.update(user);
 
-						ar.setStatus(resp.getStatusCode());
-						ar.setMessage(resp.getStatusMessage());
+                            ar.setStatus(0);
+                            ar.setMessage("Password reset successful");
 
-						logger.info("Password reset successful!!!!! for email: " + email);
-					}else{
-						logger.info("Password reset failed for: " + email);
-						ar.setStatus(resp.getStatusCode());
-						ar.setMessage(resp.getStatusMessage());
-					}
-				}else{
-					logger.info("Password reset failed for: " + email);
-					ar.setStatus(-1);
-					ar.setMessage("Password reset could not be performed at this time. Try again later.");
-				}
+                            logger.info("Password reset successful!!!!! for email: " + email);
 			}else{
 				logger.info("User with email " + email + " was not found!!!");
 				ar.setStatus(-1);
@@ -194,31 +180,31 @@ public class AccessDS extends DataService {
 		return response;
 	}
 
-	@SuppressWarnings("deprecation")
-	private PasswordResetResponse doKMPassordReset(Long orbitaId, String password){
-		String serverUrl = getSettingValue("KM_SERVLET_URL", DEFAULT_KM_SERVLET_URL);
-
-		//Execute HTTP Post Request
-		HttpResponse response = makeHttpRequest(serverUrl, orbitaId, password);
-		try {
-			if( response != null ){
-				int responseCode = response.getStatusLine().getStatusCode();
-				if(responseCode == 200){
-					String resp = convertStreamToString(response.getEntity().getContent());
-					return new Gson().fromJson(resp, PasswordResetResponse.class);
-				}else{
-					logger.debug("***** connecting to kyc manager returned a status code of : " + responseCode);
-				}                        
-			}else{
-				logger.debug("*** response from kyc manager is null...");
-			}
-
-		} catch (IOException | UnsupportedOperationException e) {
-			logger.error("An exception was thrown attempting to call km for password reset: ", e);
-		}
-
-		return null;
-	}
+//	@SuppressWarnings("deprecation")
+//	private PasswordResetResponse doKMPassordReset(Long orbitaId, String password){
+//		String serverUrl = getSettingValue("KM_SERVLET_URL", DEFAULT_KM_SERVLET_URL);
+//
+//		//Execute HTTP Post Request
+//		HttpResponse response = makeHttpRequest(serverUrl, orbitaId, password);
+//		try {
+//			if( response != null ){
+//				int responseCode = response.getStatusLine().getStatusCode();
+//				if(responseCode == 200){
+//					String resp = convertStreamToString(response.getEntity().getContent());
+//					return new Gson().fromJson(resp, PasswordResetResponse.class);
+//				}else{
+//					logger.debug("***** connecting to kyc manager returned a status code of : " + responseCode);
+//				}                        
+//			}else{
+//				logger.debug("*** response from kyc manager is null...");
+//			}
+//
+//		} catch (IOException | UnsupportedOperationException e) {
+//			logger.error("An exception was thrown attempting to call km for password reset: ", e);
+//		}
+//
+//		return null;
+//	}
 
 	private String convertStreamToString(InputStream is) {
 
@@ -1632,28 +1618,12 @@ public class AccessDS extends DataService {
 					return response;
 
 				} else {
-					PasswordResetResponse resp = doKMPassordReset(user.getOrbitaId(), newPassword);
-					if (resp != null) {
-						if (resp.getStatusCode() == 0) {
-							user.setLastPasswordChange(new Timestamp(new Date().getTime()));
-							user.setPassword(newPassword);
-							dbService.update(user);
-							response.setCode(ResponseCodeEnum.SUCCESS);
-							response.setDescription("Password change successful");
-							logger.debug("Password change successful  " + email);
-
-						} else {
-							response.setCode(ResponseCodeEnum.ERROR);
-							response.setDescription(resp.getStatusMessage());
-
-							logger.debug("Password change failed " + email);
-						}
-					} else {
-						response.setCode(ResponseCodeEnum.ERROR);
-						response.setDescription("Password change failed");
-
-						logger.debug("Password change failed " + email);
-					}
+                                    user.setLastPasswordChange(new Timestamp(new Date().getTime()));
+                                    user.setPassword(newPassword);
+                                    dbService.update(user);
+                                    response.setCode(ResponseCodeEnum.SUCCESS);
+                                    response.setDescription("Password change successful");
+                                    logger.debug("Password change successful  " + email);
 				}
 			}
 		} catch (NwormQueryException e) {
