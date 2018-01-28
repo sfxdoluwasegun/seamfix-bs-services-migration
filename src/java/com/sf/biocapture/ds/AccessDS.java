@@ -40,7 +40,6 @@ import org.hibernate.type.LongType;
 import org.hibernate.type.StringType;
 import org.jboss.resteasy.util.Base64;
 
-import com.google.gson.Gson;
 import com.sf.biocapture.app.BioCache;
 import com.sf.biocapture.app.JmsSender;
 import com.sf.biocapture.app.KannelSMS;
@@ -75,7 +74,6 @@ import com.sf.biocapture.ws.access.FetchPrivilegesResponse;
 import com.sf.biocapture.ws.access.FingerLoginResponse;
 import com.sf.biocapture.ws.access.ForgotPasswordResponse;
 import com.sf.biocapture.ws.access.NodeData;
-import com.sf.biocapture.ws.access.PasswordResetResponse;
 import com.sf.biocapture.ws.access.SettingsResponse;
 import com.sf.biocapture.ws.access.pojo.LoginCacheItem;
 import com.sf.biocapture.ws.heartbeatstatus.GeoFenceDS;
