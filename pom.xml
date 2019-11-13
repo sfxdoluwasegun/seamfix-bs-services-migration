@@ -256,4 +256,17 @@
             <url>http://singlewindow.seamfix.com:7997/nexus/content/groups/public</url>
         </repository>
     </repositories>
+     <distributionManagement>
+        <repository>
+            <id>deployment</id>
+            <name>Internal Releases</name>
+            <url>https://nexus.seamfix.com/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>deployment</id>
+            <name>Internal Releases</name>
+            <url>https://nexus.seamfix.com/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
 </project>
