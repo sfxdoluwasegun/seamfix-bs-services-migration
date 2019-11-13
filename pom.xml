@@ -232,7 +232,18 @@
 			<version>0.0.3-final</version>
 		</dependency>
     </dependencies>
-
+ <pluginRepositories>
+        <pluginRepository>
+            <id>nexus</id>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <url>https://nexus.seamfix.com/nexus/content/groups/public</url>
+        </pluginRepository>
+</pluginRepositories>
     <repositories>
         <repository>
             <id>nexus</id>
